@@ -2,7 +2,7 @@ import express from "express"
 import dotenv from "dotenv";
 import cors from "cors"
 import User from './models/User.js'
-import { ConnectDb } from "./lib/connectDb.js";
+import { ConnectDb } from "./lib/ConnectDb.js";
 import { clerkMiddleware } from '@clerk/express'
 
 import fs from "fs"
