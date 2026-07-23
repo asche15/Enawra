@@ -4,7 +4,7 @@ import cors from "cors"
 import User from './models/User.js'
 import { ConnectDb } from "./lib/ConnectDb.js";
 import { clerkMiddleware } from '@clerk/express'
-
+import clerkWebhook from "./webhooks/clerk.Webhooks.js"
 import fs from "fs"
 import path from "path"
 
@@ -13,6 +13,8 @@ const app = express()
 const PORT =process.env.PORT||3000
 const publicDir = path.join(process.cwd(), "public")
 const frontendUrl = process.env.FRONTEND_URL
+
+app.use("/api/webhooks/clerk", express.raw({type: "application/json"}), clerkWebhook)
 
 app.use(express.json())
 app.use(clerkMiddleware())
