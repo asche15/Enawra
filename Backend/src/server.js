@@ -7,6 +7,7 @@ import { clerkMiddleware } from '@clerk/express'
 import clerkWebhook from "./webhooks/clerk.Webhooks.js"
 import fs from "fs"
 import path from "path"
+import authRoutes from "./routes/auth.route.js"
 
 dotenv.config()
 const app = express()
@@ -24,6 +25,7 @@ app.get("/health", (req, res) => {
   res.status(200).json({ok: true});
 })
 
+app.use("/api/auth", authRoutes)
 
 if(fs.existsSync(publicDir)){
    app.use(express.static(publicDir))
