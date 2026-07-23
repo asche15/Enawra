@@ -36,4 +36,8 @@ app.listen(PORT, ()=>{
 
   ConnectDb();
   console.log("the server is running on ", PORT)
+
+  if(process.NODE_ENV === "production"){
+    job.start()
+  }
 })
